@@ -4,19 +4,19 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #0f0f1a;
-  color: rgba(255, 255, 255, 0.6);
+  background: #f0f4f8;
+  color: #7a8eaa;
   font-family: 'Inter', sans-serif;
   text-align: center;
   gap: 0.5rem;
 }
-.placeholder-icon { font-size: 3rem; }
-.dashboard-placeholder h2 { color: #fff; margin: 0; }
-.dashboard-placeholder p { font-size: 0.9rem; }
+.placeholder-icon { font-size: 2.5rem; }
+.dashboard-placeholder h2 { color: #1a2e5a; font-size: 1.3rem; }
+.dashboard-placeholder p { font-size: 0.85rem; }
 .dashboard-placeholder code {
-  background: rgba(108, 99, 255, 0.2);
-  color: #a89fff;
+  background: #e8edf5;
+  color: #1a2e5a;
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
