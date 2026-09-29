@@ -1,5 +1,75 @@
-<div class="dashboard-placeholder">
-  <div class="placeholder-icon">🚧</div>
-  <h2>Dashboard</h2>
-  <p>This section will be built by <strong>Developer B</strong> in the <code>feature/dashboard</code> branch.</p>
+<div class="dashboard-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <span class="nav-brand">Angular Auth Demo</span>
+    <button id="logout-btn" class="logout-btn" (click)="logout()">Logout</button>
+  </nav>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <!-- Loading state -->
+    @if (isLoading) {
+      <div class="state-box">
+        <span class="spinner"></span>
+        <p>Loading your profile...</p>
+      </div>
+    }
+
+    <!-- Error state -->
+    @if (!isLoading && errorMessage) {
+      <div class="error-box">{{ errorMessage }}</div>
+    }
+
+    <!-- User profile -->
+    @if (!isLoading && user) {
+      <div class="profile-card">
+
+        <!-- Avatar + Name -->
+        <div class="profile-header">
+          <img [src]="user.image" [alt]="user.firstName" class="avatar" />
+          <div>
+            <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+            <p class="username">&#64;{{ user.username }}</p>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Info rows -->
+        <div class="info-grid">
+          <div class="info-row">
+            <span class="label">User ID</span>
+            <span class="value">{{ user.id }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Email</span>
+            <span class="value">{{ user.email }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Gender</span>
+            <span class="value">{{ user.gender }}</span>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- JWT Status section -->
+        <div class="jwt-section">
+          <h2>JWT Token Authentication</h2>
+          <div class="jwt-status authenticated">
+            <span class="status-dot"></span>
+            Authenticated — token is active in localStorage
+          </div>
+          <p class="jwt-note">
+            Every API request automatically carries your token via the
+            <strong>Axios interceptor</strong>. The token itself is not displayed for security.
+          </p>
+        </div>
+
+      </div>
+    }
+
+  </main>
 </div>
