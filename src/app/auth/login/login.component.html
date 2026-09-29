@@ -1,0 +1,106 @@
+<!-- LOGIN PAGE -->
+<div class="login-page">
+
+  <!-- Background gradient blobs for visual depth -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <div class="login-container">
+
+    <!-- Header -->
+    <div class="login-header">
+      <div class="logo-icon">🔐</div>
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Sign in to your account</p>
+    </div>
+
+    <!-- Login Form -->
+    <form class="login-form" (ngSubmit)="onLogin()" #loginForm="ngForm">
+
+      <!-- Error Message Banner -->
+      @if (errorMessage) {
+      <div class="error-banner">
+        <span class="error-icon">⚠️</span>
+        <span>{{ errorMessage }}</span>
+      </div>
+      }
+
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-wrapper">
+          <span class="input-icon">👤</span>
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter your username"
+            [(ngModel)]="username"
+            name="username"
+            autocomplete="username"
+            [disabled]="isLoading"
+          />
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <span class="input-icon">🔒</span>
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            name="password"
+            autocomplete="current-password"
+            [disabled]="isLoading"
+          />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        id="login-btn"
+        type="submit"
+        class="login-btn"
+        [disabled]="isLoading"
+      >
+        @if (!isLoading) {
+          <span>Sign In</span>
+        } @else {
+          <span class="spinner-text">
+            <span class="spinner"></span> Signing in...
+          </span>
+        }
+      </button>
+
+      <!-- Demo Credentials Helper -->
+      <div class="demo-hint">
+        <p>Try the demo account:</p>
+        <button
+          id="demo-fill-btn"
+          type="button"
+          class="demo-btn"
+          (click)="fillDemoCredentials()"
+          [disabled]="isLoading"
+        >
+          Fill Demo Credentials
+        </button>
+      </div>
+
+    </form>
+
+    <!-- Info Card — Explains JWT for learning purposes -->
+    <div class="info-card">
+      <h3>💡 What happens when you sign in?</h3>
+      <ol>
+        <li>Your credentials are sent to the API</li>
+        <li>The server verifies them and returns a <strong>JWT token</strong></li>
+        <li>We store that token in <strong>localStorage</strong></li>
+        <li>Every future request automatically carries the token</li>
+      </ol>
+    </div>
+
+  </div>
+</div>
